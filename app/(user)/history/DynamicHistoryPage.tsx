@@ -1,0 +1,19 @@
+'use client'
+
+import dynamic from 'next/dynamic'
+
+import { SkeletonLoader } from '@/ui/SkeletonLoader'
+
+const DynamicHistoryPage = dynamic(() => import('./HistoryPage').then(mod => mod.HistoryPage), {
+	ssr: false,
+	loading: () => (
+		<div className='w-1/2 mt-20'>
+			<SkeletonLoader
+				count={3}
+				className='h-36 rounded-md mb-6'
+			/>
+		</div>
+	)
+})
+
+export { DynamicHistoryPage }

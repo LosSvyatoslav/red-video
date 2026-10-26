@@ -1,0 +1,14 @@
+@reference "../globals.css";
+
+.recaptcha {
+	@apply mb-3;
+	filter: invert(1) grayscale(1);
+	transform: scale(0.88);
+
+	> div {
+		margin-left: -1.5rem;
+		> div {
+			@apply mx-auto;
+		}
+	}
+}

@@ -1,26 +1,53 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--sidebar-width: 15rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+	--color-primary: #ef4444;
+	--color-bg: #191b28;
+	--color-border: #2a3439;
+	--font-sans: var(--font-geist-sans);
+	--spacing-layout: 1.4rem;
+	--default-transition-duration: 333ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	@apply text-white bg-bg text-base;
 }
+
+@utility grid-6-cols {
+	@apply grid grid-cols-6 gap-6;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+	appearance: none;
+	width: 10.5px;
+	height: 10.5px;
+	background-color: white;
+	border-radius: 50%;
+	cursor: pointer;
+} 
+
+.volume-slider::-moz-range-thumb {
+	width: 10.5px;
+	height: 10.5px;
+	background-color: white;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.volume-slider::-ms-thumb {
+	width: 10.5px;
+	height: 10.5px;
+	background-color: white;
+	border-radius: 50%;
+	cursor: pointer;
+} 

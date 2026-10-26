@@ -1,0 +1,34 @@
+import { Volume1, Volume2, VolumeX } from 'lucide-react'
+
+interface Props {
+	value: number
+	isMuted: boolean
+	changeVolume: (value: number) => void
+	toggleMute: () => void
+}
+
+export function VolumeControl({ toggleMute, changeVolume, isMuted, value }: Props) {
+	return (
+		<div className='flex items-center gap-2'>
+			<button
+				onClick={toggleMute}
+				className='transition-colors hover:text-primary'
+			>
+				{isMuted ? <VolumeX /> : value < 0.4 ? <Volume1 /> : <Volume2 />}
+			</button>
+			<input
+				type='range'
+				min='0'
+				max='1'
+				step='0.05'
+				value={ isMuted ? 0 : value}
+				className='w-12 volume-slider h-[0.2rem] appearance-none bg-white rounded-lg
+                cursor-pointer transition-all opacity-90 hover:opacity-100'
+				onChange={e => changeVolume(parseFloat(e.target.value))}
+				style={{
+					background: `linear-gradient(to right, white ${value * 100}%), rgba(255,255, 255, 0.2) ${value * 100}%`
+				}}
+			/>
+		</div>
+	)
+}
