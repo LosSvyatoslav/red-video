@@ -10,8 +10,13 @@ import { useProfile } from '@/hooks/useProfile'
 
 import { transformCount } from '@/utils/transform-count'
 
-import { userServsice } from '@/services/user.service'
+import { userServsice } from '@/services/studio/user.service'
 import type { ISingleVideoResponse } from '@/types/video.types'
+import { useUserPlaylists } from '../../../../(user)/playlists/useUserPlaylists'
+import { playlistService } from '@/services/playlist.service copy'
+import type { IPlaylistData } from '@/types/playlist.types'
+import toast from 'react-hot-toast'
+import { SaveToPlaylist } from './SaveToPlaylist'
 
 export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 	const { profile, refetch } = useProfile()
@@ -59,12 +64,11 @@ export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 		}
 	})
 
+
+
 	return (
 		<div className='flex items-baseline gap-7 relative z-1'>
-			<button className='flex items-center gap-1  transition-opacity opacity-80 hover:opacity-100 cursor-pointer'>
-				<ListVideo size={20} />
-				Save
-			</button>
+<SaveToPlaylist video={video}/>
 			<button
 				className='text-primary flex items-center gap-1.5 transition-opacity opacity-80 hover:opacity-100 cursor-pointer'
 				onClick={handleLike}

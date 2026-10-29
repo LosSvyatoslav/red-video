@@ -11,7 +11,7 @@ export const useOutside = <T extends HTMLElement = HTMLElement>(
 	initialIsVisible: boolean
 ): TypeOut<T> => {
 	const [isShow, setIsShow] = useState(initialIsVisible)
-	const ref = useRef<T>(null)
+	const ref = useRef<T | null>(null)
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {

@@ -21,7 +21,11 @@ interface Props {
 export function useVideoHotKeys({ volume, ...fn }: Props) {
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
-			if (event.code === 'Space' || event.key === ' ') {
+			const target = event.target as HTMLElement
+			const isInputField =
+				target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable
+
+			if (!isInputField && (event.code === 'Space' || event.key === ' ')) {
 				event.preventDefault()
 				fn.togglePlayPause()
 			}

@@ -85,7 +85,7 @@ export function CreatePlaylist({ refetch, onClose, ref }: Props) {
 					>
 						<X />
 					</button>
-					<Heading className='text-xl'>Create a playlist</Heading>
+					<Heading classNameHeading='text-xl'>Create a playlist</Heading>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						{isPending ? (
 							<SkeletonLoader count={2} />

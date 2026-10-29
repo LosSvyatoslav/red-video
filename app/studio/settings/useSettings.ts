@@ -4,7 +4,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form'
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { userServsice } from '@/services/user.service'
+import { userServsice } from '@/services/studio/user.service'
 
 import type { ISettingsData } from './settings.types'
 

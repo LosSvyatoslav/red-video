@@ -16,4 +16,4 @@ const DynamicSinglePlaylist = dynamic(() => import('./SinglePlaylist').then(mod 
 	)
 })
 
-export { DynamicSinglePlaylist }
+export default DynamicSinglePlaylist 

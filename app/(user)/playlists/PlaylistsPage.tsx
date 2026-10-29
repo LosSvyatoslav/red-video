@@ -9,17 +9,15 @@ import { Button } from '@/ui/button/Button'
 
 import { useOutside } from '@/hooks/useOutside'
 
-import { playlistService } from '@/services/playlist.service copy'
+
 
 import { CreatePlaylist } from './CreatePlaylist'
 import { PlaylistItem } from './PlaylistItem'
+import { useUserPlaylists } from './useUserPlaylists'
 
 export function PlaylistsPage() {
 	const { isShow, ref, setIsShow } = useOutside(false)
-	const { data, isLoading, refetch } = useQuery({
-		queryKey: ['playlists'],
-		queryFn: () => playlistService.getUserPlaylists()
-	})
+	const { data, isLoading, refetch } = useUserPlaylists()
 
 	return (
 		<section>

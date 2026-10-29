@@ -12,10 +12,9 @@ class PlaylistService {
 	getPlaylistsById(playlistId: string) {
 		return instance.get<IPlaylist>(`${this._PLAYLISTS}/${playlistId}`)
 	}
-	toggleVideoInPlaylist(playlistId: string, videoId: string, userId: string) {
+	toggleVideoInPlaylist(playlistId: string, videoId: string) {
 		return instance.post(`${this._PLAYLISTS}/${playlistId}/toggle-video`, {
 			videoId,
-			userId
 		})
 	}
 	createPlaylist(playlist: IPlaylistData) {
