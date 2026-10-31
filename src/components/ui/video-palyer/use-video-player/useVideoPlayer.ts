@@ -27,7 +27,6 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 		currentTime,
 		progress,
 		videoTime,
-		handleLoadedMetadata,
 		handleTimeUpdate,
 		setCurrentTime
 	} = useVideoProgress(playerRef)
@@ -46,7 +45,6 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 		skipTime,
 		toggleFullScreen,
 		changeQuality,
-		handleLoadedMetadata,
 		handleTimeUpdate,
 		changeVolume,
 		toggleMute,

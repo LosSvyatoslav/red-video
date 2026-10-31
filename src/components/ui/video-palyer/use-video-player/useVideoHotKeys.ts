@@ -10,7 +10,6 @@ interface Props {
 	skipTime: (type: TSkipTime) => void
 	toggleFullScreen: () => void
 	changeQuality: (quality: EnumVideoPlayerQuality) => void
-	handleLoadedMetadata: () => void
 	handleTimeUpdate: () => void
 	changeVolume: (value: number) => void
 	toggleMute: () => void

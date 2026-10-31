@@ -1,6 +1,6 @@
 import { axiosClassic, instance } from '@/api/axios'
 
-import type { IComment, ICommetData } from '@/types/comment.types'
+import type { IComment, ICommentData } from '@/types/comment.types'
 import type {} from '@/types/video.types'
 
 class CommentService {
@@ -10,10 +10,10 @@ class CommentService {
 		const { data } = await axiosClassic.get<IComment[]>(`${this._COMMENTS}/by-video/${publicId}`)
 		return data
 	}
-	update(id: string, data: ICommetData) {
+	update(id: string, data: ICommentData) {
 		return instance.put<IComment>(`${this._COMMENTS}/${id}`, data)
 	}
-	create(data: ICommetData) {
+	create(data: ICommentData) {
 		return instance.post<IComment>(this._COMMENTS, data)
 	}
 	delete(id: string) {

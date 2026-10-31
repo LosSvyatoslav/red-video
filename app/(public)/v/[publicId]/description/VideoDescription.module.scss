@@ -1,13 +1,20 @@
-@reference "../../../../globals.css";
-
 .article {
-	@apply text-gray-200 text-[0.9rem] leading-snug;
+	color: #e5e7eb;
+	font-size: 0.9rem;
+	line-height: 1.375;
+}
 
-	> p {
-		@apply py-2;
-	}
+.article > p {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
 
-	a {
-		@apply transition-colors hover:border-b-blue-400 border-b border-b-transparent text-blue-400;
-	}
+.article a {
+	color: #60a5fa;
+	border-bottom: 1px solid transparent;
+	transition: color 333ms;
+}
+
+.article a:hover {
+	border-bottom-color: #60a5fa;
 }

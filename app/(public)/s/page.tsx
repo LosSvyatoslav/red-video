@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
+
 import { SearchPage } from './SearchPage'
 
 export const metadata: Metadata = {
@@ -9,5 +11,9 @@ export const metadata: Metadata = {
 }
 
 export default function SPage() {
-	return <SearchPage />
+	return (
+		<Suspense fallback={<div>Loading search...</div>}>
+			<SearchPage />
+		</Suspense>
+	)
 }

@@ -34,7 +34,6 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 				controls={false}
 				src={`/uploads/videos/${EnumVideoPlayerQuality['1080p']}/${fileName}`}
 				preload='metadata'
-				onLoadedMetadata={fn.handleLoadedMetadata}
 				onTimeUpdate={fn.handleTimeUpdate}
 			/>
 			<div className='grid grid-cols-[7fr_1fr] gap-7 absolute bottom-5 right-5 left-5'>
