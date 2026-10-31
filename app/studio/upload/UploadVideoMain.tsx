@@ -12,6 +12,7 @@ import { DragNDropVideo } from './DragNDropVideo'
 import { ProgressVideoProcessing } from './ProgressVideoProcessing'
 import './UploadVideoMain.css'
 import { VideoForm } from './VideoForm'
+import { CreateVideoForm } from './CreateVideoForm'
 
 const FileUploader = dynamic(() => import('react-drag-drop-files').then(mod => mod.FileUploader), {
 	ssr: false
@@ -58,7 +59,7 @@ export function UploadVideoMain() {
 					/>
 
 					{fileName && (
-						<VideoForm
+						<CreateVideoForm
 							form={form}
 							isReadyToPublish={isReadyToPublish}
 						/>

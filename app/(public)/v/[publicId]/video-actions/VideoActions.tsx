@@ -3,20 +3,21 @@
 import { useMutation } from '@tanstack/react-query'
 import { Heart, ListVideo } from 'lucide-react'
 import { startTransition, useOptimistic, useState } from 'react'
-
 import { COLORS } from '@/constants/colors.constants'
 
 import { useProfile } from '@/hooks/useProfile'
 
 import { transformCount } from '@/utils/transform-count'
 
-import { userServsice } from '@/services/studio/user.service'
-import type { ISingleVideoResponse } from '@/types/video.types'
-import { useUserPlaylists } from '../../../../(user)/playlists/useUserPlaylists'
 import { playlistService } from '@/services/playlist.service copy'
+import { userServsice } from '@/services/studio/user.service'
 import type { IPlaylistData } from '@/types/playlist.types'
-import toast from 'react-hot-toast'
+import type { ISingleVideoResponse } from '@/types/video.types'
+
+import { useUserPlaylists } from '../../../../my/playlists/useUserPlaylists'
+
 import { SaveToPlaylist } from './SaveToPlaylist'
+import clsx from 'clsx'
 
 export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 	const { profile, refetch } = useProfile()
@@ -64,18 +65,17 @@ export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 		}
 	})
 
-
-
 	return (
 		<div className='flex items-baseline gap-7 relative z-1'>
-<SaveToPlaylist video={video}/>
+			<SaveToPlaylist video={video} />
 			<button
-				className='text-primary flex items-center gap-1.5 transition-opacity opacity-80 hover:opacity-100 cursor-pointer'
+				className='text-[#FF453A] flex items-center gap-1.5 transition-opacity opacity-80 hover:opacity-100 cursor-pointer'
 				onClick={handleLike}
 			>
 				<Heart
 					size={20}
-					fill={isLikedLocal ? COLORS.primary : 'transparent'}
+					className=''
+					fill={isLikedLocal ? '#FF453A' : 'transparent'}
 				/>
 				{transformCount(optimisticLike)}
 			</button>

@@ -1,7 +1,6 @@
 import * as m from 'framer-motion/m'
 import { FileUploader } from 'react-drag-drop-files'
 import type { UseFormReset } from 'react-hook-form'
-import toast from 'react-hot-toast'
 
 import { useUpload } from '@/ui/upload-field/useUpload'
 
@@ -14,8 +13,9 @@ interface Props {
 export function DragNDropVideo({ reset }: Props) {
 	const { uploadFile, isLoading: isUploading } = useUpload({
 		maxFileSize: 3 * 1024 * 1024 * 1024,
-        folder: 'videos',
-		onSuccess(data) {
+		folder: 'videos',
+		async onSuccess(data) {
+			const { toast } = await import('react-hot-toast')
 			const file = data[0]
 			if (!file) return
 
@@ -26,7 +26,8 @@ export function DragNDropVideo({ reset }: Props) {
 			})
 			toast.success('File uploaded successfully')
 		},
-		onError() {
+		async onError() {
+			const { toast } = await import('react-hot-toast')
 			toast.error('Failed to upload the video')
 		}
 	})
@@ -55,7 +56,8 @@ export function DragNDropVideo({ reset }: Props) {
 			dropMessageStyle={{
 				backgroundColor: '#374151'
 			}}
-			onSizeError={() => {
+			onSizeError={async () => {
+				const { toast } = await import('react-hot-toast')
 				toast.error('File is too big! (max 1GB)')
 			}}
 		/>

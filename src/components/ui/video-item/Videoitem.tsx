@@ -10,17 +10,16 @@ import { transformDate } from '@/utils/transform-date'
 
 import type { IVideo } from '@/types/video.types'
 
-
-
 import { VideoChannelName } from './VideoChannelName'
 import { VideoItemTitle } from './VideoItemTitle'
 
 interface Props {
 	video: IVideo
 	Icon?: LucideIcon
+	isImagePriority?: boolean
 }
 
-export function VideoItem({ video, Icon }: Props) {
+export function VideoItem({ video, Icon, isImagePriority }: Props) {
 	return (
 		<m.div
 			whileHover={{ scale: 1.03, y: -5 }}
@@ -33,13 +32,14 @@ export function VideoItem({ video, Icon }: Props) {
 			<div className='relative mb-1.5'>
 				<Link href={PAGE.VIDEO(video.publicId)}>
 					<Image
-						className='rounded-md'
-						width={307}
-						height={171}
+						className='rounded-md w-full'
+						width={306}
+						height={172}
 						src={video.thumbnailUrl}
 						alt={video.title}
 						style={{ width: '100%', height: 'auto' }}
-						loading="eager"
+						loading='eager'
+						priority={isImagePriority}
 					/>
 				</Link>
 				<Link
@@ -52,7 +52,8 @@ export function VideoItem({ video, Icon }: Props) {
 						height={35}
 						alt={video.channel.user.name || ''}
 						className='rounded-full shadow'
-						loading="eager"
+						loading='eager'
+						priority={isImagePriority}
 					/>
 				</Link>
 			</div>

@@ -1,8 +1,8 @@
 import { instance } from '@/api/axios'
 
 import type { IProfileResponse } from '@/types/user.types'
+import type { ISettingsData } from '../../../app/studio/settings/settings.types'
 
-import type { ISettingsData } from '../../app/studio/settings/settings.types'
 
 class UserService {
 	private _USERS = '/users'

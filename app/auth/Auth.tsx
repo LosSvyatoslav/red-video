@@ -1,10 +1,10 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { RefreshCcwIcon } from 'lucide-react'
+import dynamic from 'next/dynamic'
+import { forwardRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
-import { useSelector } from 'react-redux'
 
 import { Logo } from '@/components/layout/sidebar/header/Logo'
 
@@ -12,14 +12,20 @@ import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
 
-import { PAGE } from '@/config/public-page.config'
-
-import { useTypedSelector } from '@/store'
-
+import { SwitchAuth } from './SwitchAuth'
 import type { IAuthForm } from './auth-form.types'
 import { useAuthForm } from './useAuthForm'
 
-import styles from './captcha.module.scss'
+const DynamicRecaptcha = dynamic(() => import('./Recaptcha').then(mod => mod.Recaptcha))
+
+const ForwardedRefRecaptcha = forwardRef<ReCAPTCHA>((props, ref) => (
+	<DynamicRecaptcha
+		{...props}
+		forwardedRef={ref}
+	/>
+))
+
+ForwardedRefRecaptcha.displayName = 'ForwardRefRecaptcha'
 
 export function Auth() {
 	const [isLogin, setIsLogin] = useState(true)
@@ -41,22 +47,10 @@ export function Auth() {
 				<div className='text-center mb-1'>
 					<Logo />
 				</div>
-				<div className='flex justify-center mb-6'>
-					<button
-						type='button'
-						className={`px-4 py-2 cursor-pointer font-semibold ${isLogin ? 'text-primary border-b-2 border-primary' : 'text-gray-600'} `}
-						onClick={() => setIsLogin(true)}
-					>
-						Login
-					</button>
-					<button
-						type='button'
-						className={`px-4 cursor-pointer py-2 font-semibold ${!isLogin ? 'text-primary border-b-2 border-primary' : 'text-gray-600'} `}
-						onClick={() => setIsLogin(false)}
-					>
-						Register
-					</button>
-				</div>
+				<SwitchAuth
+					isLogin={isLogin}
+					setIsLogin={setIsLogin}
+				/>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					{isLoading ? (
 						<SkeletonLoader count={3} />
@@ -89,13 +83,7 @@ export function Auth() {
 									placeholder='Enter password again'
 								/>
 							)}
-							<ReCAPTCHA
-								ref={recaptchaRef}
-								size='normal'
-								sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-								theme='light'
-								className={styles.recaptcha}
-							/>
+							<ForwardedRefRecaptcha ref={recaptchaRef} />
 						</>
 					)}
 					<div className='text-center mt-4'>

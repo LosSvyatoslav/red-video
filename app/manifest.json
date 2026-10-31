@@ -1,0 +1,11 @@
+{
+    "theme-color": "#ef4444",
+    "background_color": "#191B28",
+    "scope": "/",
+    "start_url" : "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "name": "RED Video",
+    "short_name": "RV",
+    "description": "Best youtube's alternative platform."
+}

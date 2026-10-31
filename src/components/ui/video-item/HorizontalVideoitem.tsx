@@ -32,7 +32,7 @@ export function HorizontalVideoItem({ video }: Props) {
 						loading='eager'
 						className='rounded-md'
 						width={206}
-						height={116}
+						height={115}
 						src={video.thumbnailUrl}
 						alt={video.title}
 						style={{ width: '100%', height: 'auto' }}

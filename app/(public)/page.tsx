@@ -6,10 +6,9 @@ import { VideoItem } from '@/ui/video-item/Videoitem'
 
 import { videoService } from '@/services/video.service'
 
-import { Explore } from './explore/Explore'
+import { ExploreSection } from './explore/ExploreSection'
 
 export const revalidate = 100
-
 
 export const metadata: Metadata = {
 	title: 'RED Video',
@@ -38,14 +37,13 @@ export default async function Home() {
 								key={video.id}
 								video={video}
 								Icon={Flame}
+								isImagePriority
 							/>
 						))}
 					</div>
 				</section>
 			)}
-			<Explore />
+			<ExploreSection />
 		</section>
 	)
 }
-
-

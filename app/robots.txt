@@ -1,0 +1,26 @@
+User-Agent: Yandex
+Host: 'https://redvideo.com
+Disallow: /auth
+Disallow: /recover
+Disallow: *?
+Disallow: /dosc/*
+Disallow: *utm_
+Disallow: *?query=
+Disallow: /media/*PAGEN_1=
+Disallow: *?keyword=
+Disallow: *?sub
+
+Sitemap: https://redvideo.com/sitemap.xml
+
+User-Agent: Googlebot
+Disallow: /auth
+Disallow: /recover
+Disallow: *?
+Disallow: /dosc/*
+Disallow: *utm_
+Disallow: *?query=
+Disallow: /media/*PAGEN_1=
+Disallow: *?keyword=
+Disallow: *?sub
+
+Sitemap: https://redvideo.com/sitemap.xml

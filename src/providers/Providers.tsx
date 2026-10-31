@@ -14,7 +14,8 @@ export function Providers({ children }: { children: ReactNode }) {
 			new QueryClient({
 				defaultOptions: {
 					queries: {
-						retry: 1
+						retry: 1,
+						refetchOnWindowFocus: false
 					},
 					mutations: {
 						retry: 1
@@ -28,9 +29,14 @@ export function Providers({ children }: { children: ReactNode }) {
 			<Provider store={store}>
 				<LazyMotion features={domAnimation}>
 					{children}
-					<Toaster />
+					<Toaster
+						toastOptions={{
+							style: { backgroundColor: '#202937', color: 'white' }
+						}}
+					/>
 				</LazyMotion>
 			</Provider>
 		</QueryClientProvider>
 	)
 }
+

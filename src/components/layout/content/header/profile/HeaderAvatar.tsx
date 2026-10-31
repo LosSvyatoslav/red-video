@@ -18,10 +18,11 @@ export function HeaderAvatar() {
 			<Link
 				href={STUDIO_PAGE.SETTINGS}
 				className='shrink-0'
+				aria-label='open-settings'
 			>
 				<Image
 					alt=''
-					src={profile?.channel?.avatarUrl || '/avatar.png'}
+					src={profile?.channel?.avatarUrl || '/images/avatar.png'}
 					width={40}
 					height={40}
 					className='rounded-lg'

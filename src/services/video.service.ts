@@ -1,4 +1,5 @@
 import { axiosClassic } from '@/api/axios'
+import type { IPaginationParams } from '@/types/pagination.types'
 
 import type {
 	IOtherVideos,
@@ -12,12 +13,18 @@ class VideoService {
 	getTrendingVideos() {
 		return axiosClassic.get<IVideo[]>(`${this._VIDEOS}/trending`)
 	}
-	getExploreVideos(userId?: string) {
-		return axiosClassic.get<IVideosPagination>(`${this._VIDEOS}/explore`, {
-			params: {
-				userId
-			}
+	async getExploreVideos(userId?: string, params?: IPaginationParams, excludeIds?: string[]) {
+		const excludeIdsString = excludeIds?.join(',') || ''
+		const { data } = await axiosClassic.get<IVideosPagination>(`${this._VIDEOS}/explore`, {
+			params: userId
+				? {
+						userId,
+						...params,
+						excludeIds: excludeIdsString
+					}
+				: params
 		})
+		return data
 	}
 	getAll(searchTerm?: string | null) {
 		return axiosClassic.get<IVideosPagination>(
